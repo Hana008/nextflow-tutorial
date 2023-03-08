@@ -37,7 +37,7 @@ process index {
 
 Channel 
     .fromFilePairs( params.reads, checkIfExists:true )
-    .set { read_pairs_ch } 
+    .into { read_pairs_ch; read_pairs_ch_2 } 
 
 /*
  * Run Salmon to perform the quantification of expression using
@@ -47,7 +47,7 @@ process quantification {
      
     input:
     path index from index_ch
-    tuple val(pair_id), path(reads) from read_pairs_ch
+    tuple val(pair_id), path(reads) from read_pairs_ch_2
  
     output:
     path(pair_id) into quant_ch

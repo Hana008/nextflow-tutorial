@@ -44,6 +44,7 @@ Channel
  * the index and the matched read files
  */
 process quantification {
+    publishDir 'results'
      
     input:
     path index from index_ch

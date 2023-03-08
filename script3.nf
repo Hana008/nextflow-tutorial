@@ -16,4 +16,5 @@ log.info """\
          .stripIndent()
 
 
-read_pairs_ch = Channel .fromFilePairs(params.reads)
+Channel .fromFilePairs(params.reads, checkIfExists: true).set {read_pairs_ch}
+read_pairs_ch.view()

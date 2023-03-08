@@ -33,4 +33,6 @@ process index {
     salmon index --threads $task.cpus -t $transcriptome -i index
     """
 }
+
+Channel.of(index_ch).view()
  
